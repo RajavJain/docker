@@ -6,6 +6,12 @@ connectToMongo();
 const app = express();
 const port = 3000;
 
+
+//Available Routes for sample
+app.use('/api/auth', require('./routes/auth'))//use to mount any file at the given endpoint and isko isliye app.use kiya hai taki hamara code clean dikhe and in auth.js mai hamne same tarekke se (req,res) hi send kiya hai 
+app.use('/api/notes', require('./routes/notes'))
+
+
 app.get('/', (req, res) => {
   res.send('Hello World! ')
 })
