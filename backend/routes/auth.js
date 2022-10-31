@@ -39,7 +39,7 @@ router.post('/createuser',
             //         res.json({ error: 'This email is already registered' })
             //     });
 
-            res.json({ "Nice": "nice" })
+            res.json(user)
         } 
         catch (error) {
             console.error(error.message)
