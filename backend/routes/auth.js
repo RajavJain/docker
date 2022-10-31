@@ -17,25 +17,34 @@ router.post('/createuser',
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        //res.send(req.body); or we can use the below syntax through express-validator site...
+        //res.send(req.body); or we can use the below syntax through express-validator site
+
+
         //Checking whether this user is registed or not----
-        let user=User.findOne({email: req.body.email})
-        if(user){
-            return res.status(400).json({error: "Sorry this user is already registered"})
+        //Rapped it in to simple try catch block-----
+        try {
+            let user = await User.findOne({ email: req.body.email })//it will search out the data with similar email id---
+            if (user) {
+                return res.status(400).json({ error: "Sorry this user is already registered" })
+            }
+            user = await User.create({  // in sab ko await krana jaruri tha, warna execution mai error aaeya
+                name: req.body.name,
+                password: req.body.password,
+                email: req.body.email
+            })
+
+            // .then(user => res.json(user)) -------- used async-await instead of .then
+            //     .catch(err => {
+            //         console.log(err)
+            //         res.json({ error: 'This email is already registered' })
+            //     });
+
+            res.json({ "Nice": "nice" })
+        } 
+        catch (error) {
+            console.error(error.message)
+            res.status(500).send("Some Error occured");
         }
-
-        user= await User.create({
-            name: req.body.name,
-            password: req.body.password,
-            email: req.body.email
-
-        })
-        
-        // .then(user => res.json(user)) -------- used async-await instead of .then
-        //     .catch(err => {
-        //         console.log(err)
-        //         res.json({ error: 'This email is already registered' })
-        //     });
     })
 
 

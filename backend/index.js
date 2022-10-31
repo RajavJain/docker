@@ -4,7 +4,7 @@ const express = require('express')
 connectToMongo();
 
 const app = express();
-const port = 3000;
+const port = 2000;
 
 app.use(express.json());//middle-ware used for receiving the response send through req.body, so that we can send data through json file
 
