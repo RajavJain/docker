@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();//used as we have used app.use in index.js for mounting it
 const { body, validationResult } = require('express-validator');//used for validating the input
-
-
 const User = require('../models/User')//imported user schema
+const bcrypt = require('bcryptjs');
+
 
 //used router as we have used app.use in index.js for mounting it, ye bss code ko neat dikhne k liye kiya hai...
 router.post('/createuser',
