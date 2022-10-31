@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const {Schema} = mongoose;
+const {Schema} = mongoose;//imported Schema from mongoose for exporting purpose as it was giving error
 
 const UserSchema = new Schema({
     name:{
