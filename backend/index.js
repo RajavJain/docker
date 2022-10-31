@@ -6,6 +6,8 @@ connectToMongo();
 const app = express();
 const port = 3000;
 
+app.use(express.json());//middle-ware used for receiving the response send through req.body, so that we can send data through json file
+
 
 //Available Routes for sample
 app.use('/api/auth', require('./routes/auth'))//use to mount any file at the given endpoint and isko isliye app.use kiya hai taki hamara code clean dikhe and in auth.js mai hamne same tarekke se (req,res) hi send kiya hai 
