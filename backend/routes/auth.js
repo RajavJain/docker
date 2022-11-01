@@ -49,10 +49,10 @@ router.post('/createuser',
                     id: user.id
                 }
             }
-            const authtoken= jwt.sign(data,JWT_SECRET)
+            const authtoken= jwt.sign(data,JWT_SECRET)//for the signing the password of the user, and will be used in further verification of the user
 
             // res.json(user)
-            res.json({authtoken})
+            res.json({authtoken})//it will send the signed token in body....
         }
         catch (error) {
             console.error(error.message)
