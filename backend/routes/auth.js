@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();//used as we have used app.use in index.js for mounting it
-const { body, validationResult } = require('express-validator');//used for validating the input
+const { body, validationResult } = require('express-validator');//used for validating the input, syntax from express-validator site
 const User = require('../models/User')//imported user schema
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');//imported from bcrptjs for decrpting the password
+var jwt = require('jsonwebtoken');//imported from jwt web token, use to sign the password follwed by salt
 
+const JWT_SECRET = 'Signedby@RajavJain'//made the signed string which will be added in the password of the user
 
 //used router as we have used app.use in index.js for mounting it, ye bss code ko neat dikhne k liye kiya hai...
 router.post('/createuser',
@@ -35,15 +37,22 @@ router.post('/createuser',
                 name: req.body.name,
                 password: secPass,
                 email: req.body.email
-            })
+            });
 
             // .then(user => res.json(user)) -------- used async-await instead of .then
             //     .catch(err => {
             //         console.log(err)
             //         res.json({ error: 'This email is already registered' })
             //     });
+            const data={
+                user:{
+                    id: user.id
+                }
+            }
+            const authtoken= jwt.sign(data,JWT_SECRET)
 
-            res.json(user)
+            // res.json(user)
+            res.json({authtoken})
         }
         catch (error) {
             console.error(error.message)
