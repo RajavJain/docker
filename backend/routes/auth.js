@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');//imported from bcrptjs for decrpting the pas
 var jwt = require('jsonwebtoken');//imported from jwt web token, use to sign the password follwed by salt
 
 const JWT_SECRET = 'Signedby@RajavJain'//made the signed string which will be added in the password of the user
-
+const fetchuser= require('../middleware/fetchuser')
 //used router as we have used app.use in index.js for mounting it, ye bss code ko neat dikhne k liye kiya hai...
 
 
@@ -118,11 +118,11 @@ router.post('/login',
 //ROUTE-----------3-----------
 
 // Getting information of loggedIN User using POST: ENDPOINT:"/api/auth/getuser"  LOGIN REQUIRED    <<<<<<<<<-------------------------->>>>>>>>>>>>
-router.post('/getuser', async (req, res) => {
+router.post('/getuser', fetchuser, async (req, res) => { // for more details about fetchuser check out middle ware fetchuser.js... 
         try {
-            userId="";
+            userId= req.user.id;
             const user= await User.findById(userId).select("-password");
-
+            res.send(user)
         } catch (error) {
             console.error(error.message)
             res.status(500).send("Some Error occured from our side!");
