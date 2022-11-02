@@ -8,6 +8,10 @@ var jwt = require('jsonwebtoken');//imported from jwt web token, use to sign the
 const JWT_SECRET = 'Signedby@RajavJain'//made the signed string which will be added in the password of the user
 
 //used router as we have used app.use in index.js for mounting it, ye bss code ko neat dikhne k liye kiya hai...
+
+
+
+//Create a User using POST: ENDPOINT:"/api/auth/createuser"     <<<<<<<<<-------------------------->>>>>>>>>>>>
 router.post('/createuser',
     [    //isme ek array mai saari conditions hi paas kr di hai... with the use of express-validator from it's site
         body('email').isEmail(),
@@ -58,6 +62,21 @@ router.post('/createuser',
             console.error(error.message)
             res.status(500).send("Some Error occured");
         }
+    })
+
+
+//Authenticate a User using POST: ENDPOINT:"/api/auth/login"     <<<<<<<<<-------------------------->>>>>>>>>>>>
+router.post('/login',
+    [    //isme ek array mai saari conditions hi paas kr di hai... with the use of express-validator from it's site
+        body('email','Enter correct email').isEmail(),
+        body('password','Password cannot be blank').exists(),
+    ]
+    , async (req, res) => {
+        const errors = validationResult(req);//took the code from express-validator, more optimized one, if errors then it will return error
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
     })
 
 
