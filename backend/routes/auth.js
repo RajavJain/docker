@@ -11,7 +11,10 @@ const JWT_SECRET = 'Signedby@RajavJain'//made the signed string which will be ad
 
 
 
-//Create a User using POST: ENDPOINT:"/api/auth/createuser"     <<<<<<<<<-------------------------->>>>>>>>>>>>
+
+//ROUTE-----------1-----------
+
+//Create a User using POST: ENDPOINT:"/api/auth/createuser"    NO LOGIN REQUIRED        <<<<<<<<<-------------------------->>>>>>>>>>>>
 router.post('/createuser',
     [    //isme ek array mai saari conditions hi paas kr di hai... with the use of express-validator from it's site
         body('email').isEmail(),
@@ -48,15 +51,15 @@ router.post('/createuser',
             //         console.log(err)
             //         res.json({ error: 'This email is already registered' })
             //     });
-            const data={
-                user:{
+            const data = {
+                user: {
                     id: user.id
                 }
             }
-            const authtoken= jwt.sign(data,JWT_SECRET)//for the signing the password of the user, and will be used in further verification of the user
+            const authtoken = jwt.sign(data, JWT_SECRET)//for the signing the password of the user, and will be used in further verification of the user
 
             // res.json(user)
-            res.json({authtoken})//it will send the signed token in body....
+            res.json({ authtoken })//it will send the signed token in body....
         }
         catch (error) {
             console.error(error.message)
@@ -66,13 +69,14 @@ router.post('/createuser',
 
 
 
+//ROUTE-----------2-----------
 
 
-//Authenticate a User using POST: ENDPOINT:"/api/auth/login"     <<<<<<<<<-------------------------->>>>>>>>>>>>
+//Authenticate a User using POST: ENDPOINT:"/api/auth/login"  NO LOGIN REQUIRED       <<<<<<<<<-------------------------->>>>>>>>>>>>
 router.post('/login',
     [    //isme ek array mai saari conditions hi paas kr di hai... with the use of express-validator from it's site
-        body('email','Enter correct email').isEmail(),
-        body('password','Password cannot be blank').exists(),
+        body('email', 'Enter correct email').isEmail(),
+        body('password', 'Password cannot be blank').exists(),
     ]
     , async (req, res) => {
         const errors = validationResult(req);//took the code from express-validator, more optimized one, if errors then it will return error
@@ -80,32 +84,52 @@ router.post('/login',
             return res.status(400).json({ errors: errors.array() });
         }
 
-        const {email, password}= req.body;
+        const { email, password } = req.body;
         try {
-            let user=await User.findOne({email});
-            if(!user){
+            let user = await User.findOne({ email });
+            if (!user) {
                 return res.status(400).json("Please try to login with correct credentials!!");
             }
 
-            const passwordCompare= await bcrypt.compare(password,user.password);//it will compare the hashed password to password given by the user and this will be done using bcrptjs compare function...
-            if(!passwordCompare){
+            const passwordCompare = await bcrypt.compare(password, user.password);//it will compare the hashed password to password given by the user and this will be done using bcrptjs compare function...
+            if (!passwordCompare) {
                 return res.status(400).json("Please try to login with correct credentials!!");
             }
 
-            const data={
-                user:{
+            const data = {
+                user: {
                     id: user.id
                 }
             }
-            const authtoken= jwt.sign(data,JWT_SECRET)//for the signing the password of the user, and will be used in further verification of the user
+            const authtoken = jwt.sign(data, JWT_SECRET)//for the signing the password of the user, and will be used in further verification of the user
 
-            res.json({authtoken})//it will send the signed token in body....
+            res.json({ authtoken })//it will send the signed token in body....
 
-        }catch (error) {
+        } catch (error) {
             console.error(error.message)
             res.status(500).send("Some Error occured from our side!");
         }
     })
+
+
+
+
+
+//ROUTE-----------3-----------
+
+// Getting information of loggedIN User using POST: ENDPOINT:"/api/auth/getuser"  LOGIN REQUIRED    <<<<<<<<<-------------------------->>>>>>>>>>>>
+router.post('/getuser', async (req, res) => {
+        try {
+            userId="";
+            const user= await User.findById(userId).select("-password");
+
+        } catch (error) {
+            console.error(error.message)
+            res.status(500).send("Some Error occured from our side!");
+        }
+    })
+
+
 
 
 module.exports = router;
