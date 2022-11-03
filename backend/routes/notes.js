@@ -63,6 +63,39 @@ router.post('/addnote', fetchuser, [
 
 //ROUTE-----------III-----------
 
-//Adding new notes using POST : ENDPOINT:"/api/auth/addnote"     LOGIN REQUIRED        <<<<<<<<<-------------------------->>>>>>>>>>>>
+//Updating new notes using PUT : ENDPOINT:"/api/auth/updatenote"     LOGIN REQUIRED        <<<<<<<<<-------------------------->>>>>>>>>>>>
+router.put('/updatenote/:id', fetchuser, async (req, res) => {
+        const {title,description, tag} = req.body;//destructured all the inputs given by the user
+        //Creating a newNote object----
+        let newNote = {};
+        if(title)
+        {
+            newNote.title=title;
+        }
+        if(description)
+        {
+            newNote.description=description;
+        }
+        if(tag)
+        {
+            newNote.tag=tag;
+        }
+
+        //Finding the note to be updated and updating it....
+        let note = await Note.findById(req.params.id);
+        //ye sab to pehle ye dekhne k liye kr rhe hai ki user apne hi notes access kr rha hai ki nhi...
+        if(!note)
+        {
+           return res.status(404).send("Not Found");
+        }
+        if(note.user.toString() !== req.user.id) {
+            return res.status(401).send("Not Allowed");
+        }
+
+        note= await Note.findByIdAndUpdate(req.params.id, {$set: newNote}, {new:true})
+        res.json({note});
+
+})
+
 
 module.exports = router;
