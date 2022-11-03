@@ -6,7 +6,10 @@ const { body, validationResult } = require('express-validator');//used for valid
 
 
 
-//ROUTE-----------1-----------
+//-----------------------------------------------------/////--------------------------------------------------
+
+
+//ROUTE-----------I-----------
 
 //Get all the notes using GET : ENDPOINT:"/api/auth/fetchallnotes"    LOGIN REQUIRED        <<<<<<<<<-------------------------->>>>>>>>>>>>
 router.get('/fetchallnotes', fetchuser, async (req, res) => {
@@ -24,7 +27,9 @@ router.get('/fetchallnotes', fetchuser, async (req, res) => {
 
 
 
-//ROUTE-----------2-----------
+//-----------------------------------------------------/////--------------------------------------------------
+
+//ROUTE-----------II-----------
 
 //Adding new notes using POST : ENDPOINT:"/api/auth/addnote"     LOGIN REQUIRED        <<<<<<<<<-------------------------->>>>>>>>>>>>
 router.post('/addnote', fetchuser, [
@@ -34,17 +39,17 @@ router.post('/addnote', fetchuser, [
 ],
     async (req, res) => {
         try {
-            const { title, description, tag } = req.body;
+
+            const { title, description, tag } = req.body;//ye teen cheeze daalna hoga code mai... jab hum body ko response denge api k through
             const errors = validationResult(req);//took the code from express-validator, more optimized one, if errors then it will return error
             if (!errors.isEmpty()) {
                 return res.status(400).json({ errors: errors.array() });
             }
-
+            //It will create a new Note to the database
             const note = new Note({
                 title, description, tag, user: req.user.id
             })
-            const savedNote = await note.save();
-
+            const savedNote = await note.save();//this mongodb command will save the notes to the DB...
 
             res.json(savedNote);
         } catch (error) {
@@ -54,5 +59,10 @@ router.post('/addnote', fetchuser, [
     })
 
 
+//-----------------------------------------------------/////--------------------------------------------------
+
+//ROUTE-----------III-----------
+
+//Adding new notes using POST : ENDPOINT:"/api/auth/addnote"     LOGIN REQUIRED        <<<<<<<<<-------------------------->>>>>>>>>>>>
 
 module.exports = router;
