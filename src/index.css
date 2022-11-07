@@ -3,3 +3,13 @@
 body{
     background-color: rgb(168, 197, 197);
 }
+
+i{
+    cursor: pointer;
+    /* transition-property: background-color; */
+    /* transition-duration: 20s; */
+}
+
+i:hover{
+    color: rgb(255, 0, 0);
+}

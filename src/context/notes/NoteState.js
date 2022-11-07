@@ -7,7 +7,7 @@ import { useState } from "react";
 const NoteState = (props) => {
 const notesInitial = [
     {
-        "_id": "6363d77587b2e70ba0c7ef2f",
+        "_id": "6363d775873b2e70ba0c7ef2f",
         "user": "636156f4f38ac32cca9918dd",
         "title": "LinkedIN",
         "description": "Add new connections",
@@ -16,7 +16,7 @@ const notesInitial = [
         "__v": 0
     },
     {
-        "_id": "6363d77587b2e70ba0c7ef31",
+        "_id": "6363d775837b2e7320ba0c7ef31",
         "user": "636156f4f38ac32cca9918dd",
         "title": "LinkedIN",
         "description": "Add new connections",
@@ -25,7 +25,7 @@ const notesInitial = [
         "__v": 0
     },
     {
-        "_id": "6363d77687b2e70ba0c7ef33",
+        "_id": "6363d77687b2e70ba320c7ef33",
         "user": "636156f4f38ac32cca9918dd",
         "title": "LinkedIN",
         "description": "Add new connections",
@@ -34,7 +34,7 @@ const notesInitial = [
         "__v": 0
     },
     {
-        "_id": "6363d77687b2e70ba0c7ef35",
+        "_id": "6363d7768327b2e70ba0c7ef35",
         "user": "636156f4f38ac32cca9918dd",
         "title": "LinkedIN",
         "description": "Add new connections",
@@ -43,7 +43,7 @@ const notesInitial = [
         "__v": 0
     },
     {
-        "_id": "6363d77687b2e70ba0c7ef35",
+        "_id": "6363d77687b2e70ba230c7ef35",
         "user": "636156f4f38ac32cca9918dd",
         "title": "LinkedIN",
         "description": "Add new connections",
@@ -52,7 +52,7 @@ const notesInitial = [
         "__v": 0
     },
     {
-        "_id": "6363d77687b2e70ba0c7ef35",
+        "_id": "6363d77687b2e70b12a0c7ef35",
         "user": "636156f4f38ac32cca9918dd",
         "title": "LinkedIN",
         "description": "Add new connections",
@@ -61,7 +61,7 @@ const notesInitial = [
         "__v": 0
     },
     {
-        "_id": "6363d77687b2e70ba0c7ef35",
+        "_id": "6363d7768732b2e70ba0c7ef35",
         "user": "636156f4f38ac32cca9918dd",
         "title": "LinkedIN",
         "description": "Add new connections",

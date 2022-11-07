@@ -13,7 +13,7 @@ const Notes = () => {
 
             {notes.map((note) => {
                 //As a prop mai note ko send kr diya hai and Noteitem.js mai props ki jagah pr title and desc bhej diya hai
-                return <Noteitem note={note}/>
+                return <Noteitem key={note._id} note={note}/>
             })}
 
         </div>
