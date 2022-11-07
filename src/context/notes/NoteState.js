@@ -41,11 +41,39 @@ const notesInitial = [
         "tag": "Important",
         "date": "2022-11-03T15:00:06.187Z",
         "__v": 0
+    },
+    {
+        "_id": "6363d77687b2e70ba0c7ef35",
+        "user": "636156f4f38ac32cca9918dd",
+        "title": "LinkedIN",
+        "description": "Add new connections",
+        "tag": "Important",
+        "date": "2022-11-03T15:00:06.187Z",
+        "__v": 0
+    },
+    {
+        "_id": "6363d77687b2e70ba0c7ef35",
+        "user": "636156f4f38ac32cca9918dd",
+        "title": "LinkedIN",
+        "description": "Add new connections",
+        "tag": "Important",
+        "date": "2022-11-03T15:00:06.187Z",
+        "__v": 0
+    },
+    {
+        "_id": "6363d77687b2e70ba0c7ef35",
+        "user": "636156f4f38ac32cca9918dd",
+        "title": "LinkedIN",
+        "description": "Add new connections",
+        "tag": "Important",
+        "date": "2022-11-03T15:00:06.187Z",
+        "__v": 0
     }
 ]
-
+//used useState hook because isko hame aage update krna hoga isliye
 const [notes, setNotes]= useState(notesInitial)
 return(
+    //ye export krne mai kaam aaega...
     <NoteContext.Provider value={{notes, setNotes}}>
         {props.children}
     </NoteContext.Provider>
