@@ -12,10 +12,13 @@ function App() {
       <Router>
         <Navbar />
         <div className="container">
-          <Routes>
-            <Route exact path="/" element={<Home/>} />
-            <Route exact path="/about" element={<About/>} />
-          </Routes>
+          {/* yaha noteState ko lga diya hai takki saare states access kr paaye through NoteContext.... */}
+          <NoteState>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/about" element={<About />} />
+            </Routes>
+          </NoteState>
         </div>
       </Router>
 

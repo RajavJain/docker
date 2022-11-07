@@ -5,7 +5,6 @@ import { useState } from "react";
 
 
 const NoteState = (props) => {
-
 const notesInitial = [
     {
         "_id": "6363d77587b2e70ba0c7ef2f",
