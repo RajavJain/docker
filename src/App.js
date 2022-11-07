@@ -5,12 +5,14 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Navbar from './components/Navbar';
 import About from './components/About';
 import NoteState from './context/notes/NoteState';
+import Alert from './components/Alert';
 
 function App() {
   return (
     <>
       <Router>
         <Navbar />
+        <Alert message="WILL BE WORKING ON IT LATER!!!"/>
         <div className="container">
           {/* yaha noteState ko lga diya hai takki saare states access kr paaye through NoteContext.... */}
           <NoteState>
