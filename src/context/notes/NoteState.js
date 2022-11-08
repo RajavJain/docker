@@ -73,6 +73,8 @@ const NoteState = (props) => {
     //used useState hook because isko hame aage update krna hoga isliye
     const [notes, setNotes] = useState(notesInitial)
 
+
+
     // Function for adding notes
     const addNote = (title, description, tag) => {
         console.log("Adding a note");
@@ -88,13 +90,18 @@ const NoteState = (props) => {
         setNotes(notes.concat(note))
     }
 
-    //Function for deleting notes
-    const deleteNote = () => {
 
+
+    //Function for deleting notes
+    const deleteNote = (id) => {
+        const newNotes =notes.filter((note)=>{return note._id!==id})
+        setNotes(newNotes);
     }
 
+
+
     //Function for Editing notes
-    const editNote = () => {
+    const editNote = (id, title, description, tag) => {
 
     }
 

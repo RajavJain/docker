@@ -17,7 +17,7 @@ function App() {
           {/* yaha noteState ko lga diya hai takki saare states access kr paaye through NoteContext.... */}
           <NoteState>
             <Routes>
-              <Route exact path="/" element={<Home />} />
+              <Route exact path="/" element={<Home/>} />
               <Route exact path="/about" element={<About />} />
             </Routes>
           </NoteState>

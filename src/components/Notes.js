@@ -7,7 +7,7 @@ import noteContext from '../context/notes/noteContext';
 const Notes = () => {
     const context = useContext(noteContext);
     // eslint-disable-next-line 
-    const { notes} = context;
+    const {notes} = context;
     return (
         <>
         <AddNote/>
