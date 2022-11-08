@@ -2,7 +2,9 @@ import React from 'react'
 
 //Is component ko Notes.js mai send kr diya hai.... 
 const Noteitem = (props) => {
-    const { note } = props;
+        // eslint-disable-next-line
+    const { note , addNote} = props;
+    
     return (
         <>
             <div className='col-md-3'>

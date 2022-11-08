@@ -2,8 +2,9 @@ import React from 'react'
 
 const Alert = (props) => {
     return (
-        <>
-            <div class="alert alert-primary" role="alert">
+        <>   
+        {/* Imported atert from Bootstrap... */}
+            <div className="alert alert-primary" role="alert">
                 {props.message}
             </div>
         </>
