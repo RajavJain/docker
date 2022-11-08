@@ -8,8 +8,6 @@ const Noteitem = (props) => {
     const { deleteNote } = context;
     const {note}= props;
 
-
-
     return (
         <>
             <div className='col-md-3'>

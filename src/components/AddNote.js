@@ -6,11 +6,15 @@ import noteContext from '../context/notes/noteContext';
 
 
 const AddNote = () => {
+    //useContext ki madad se called function named addNote from NoteState.js ..
     const context = useContext(noteContext);
     const {addNote} = context;
 
+
     const [note, setNote] = useState({title: "", description: "", tag: "default"})
 
+
+    //function made for buttons and input-----
     const handleClick = (e)=>{
         e.preventDefault();//to avoid reloading of the page.. 
         addNote(note.title, note.description, note.tag);
@@ -19,6 +23,7 @@ const AddNote = () => {
     const onChange = (e)=>{
         setNote({...note, [e.target.name]: e.target.value})
     }
+    
 return (
         <div className="container my-3">
             <h2>Add a Note</h2>

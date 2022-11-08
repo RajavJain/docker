@@ -5,6 +5,8 @@ import { useState } from "react";
 //iska kaam kewal components ke andar jo components hai unko access krana to another components.. 
 
 const NoteState = (props) => {
+
+
     const notesInitial = [
         {
             "_id": "6363d775873b2e70ba0c7ef2f",
@@ -70,16 +72,17 @@ const NoteState = (props) => {
             "__v": 0
         }
     ]
+
     //used useState hook because isko hame aage update krna hoga isliye
     const [notes, setNotes] = useState(notesInitial)
 
 
 
-    // Function for adding notes
+    // Function for adding notes and then will be used through useContext hook
     const addNote = (title, description, tag) => {
         console.log("Adding a note");
-        const note={
-            "_id": "6363d7768732b2e70ba0c7ef35",
+        const note = {
+            "_id": "6363d7768732b2e70ba0c7wref34535",
             "user": "636156f4f38ac32cca9918dd",
             "title": title,
             "description": description,
@@ -92,9 +95,9 @@ const NoteState = (props) => {
 
 
 
-    //Function for deleting notes
+    //Function for deleting notes and then will be used through useContext hook
     const deleteNote = (id) => {
-        const newNotes =notes.filter((note)=>{return note._id!==id})
+        const newNotes = notes.filter((note) => { return note._id !== id })
         setNotes(newNotes);
     }
 
@@ -102,8 +105,8 @@ const NoteState = (props) => {
 
     //Function for Editing notes
     const editNote = (id, title, description, tag) => {
-
     }
+
 
     return (
         //ye export krne mai kaam aaega... using useContext hook>>>>>
