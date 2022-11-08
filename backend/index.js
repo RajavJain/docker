@@ -1,10 +1,15 @@
 const connectToMongo = require("./db") //imported server through db.js
 const express = require('express')
+var cors = require('cors')//use to install to access data through API hits from the server....  
+
 
 connectToMongo();
 
+
 const app = express();
 const port = 2000;
+app.use(cors());
+
 
 app.use(express.json());//middle-ware used for receiving the response send through req.body, so that we can send data through json file
 
