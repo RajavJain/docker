@@ -13,6 +13,8 @@ const NoteState = (props) => {
 
 
 
+
+
   //GET ALL NOTES>>>>>>>>
   // Function for fetching notes and then will be used through useContext hook
   const getNotes = async () => {
@@ -26,7 +28,7 @@ const NoteState = (props) => {
     });
     const json = await response.json();
     console.log(json);
-    setNotes(json);
+    setNotes(json);//it will show all the notes as we have passed json in setnotes i.e. used above using useState
   }
 
 
@@ -80,18 +82,17 @@ const NoteState = (props) => {
     const json = await response.json()
     console.log(json)
     // setNotes(json);
-    const newNotes =  notes.filter((note) => { return note._id !== id })
+    const newNotes = notes.filter((note) => { return note._id !== id })
     setNotes(newNotes);
   }
 
 
 
 
-//UPDATE NOTES>>>>>
-//Function for Editing notes
-const editNote = async (id, title, description, tag) => {
-  //Logic for API calls---
-  const getNotes = async () => {
+  //UPDATE/ EDIT NOTES>>>>>
+  //Function for Editing notes
+  const editNote = async (id, title, description, tag) => {
+    //Logic for API calls---
     // API Call 
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
       method: 'POST',
@@ -101,31 +102,29 @@ const editNote = async (id, title, description, tag) => {
       },
       body: JSON.stringify({ title, description, tag })
     });
-    const json = await response.json()
-    console.log(json)
-    setNotes(json);
-  }
+    const json = await response.json();
+    console.log(json);
 
 
-  //Logic to edit the notes in Client-side
-  for (let index = 0; index < notes.length; index++) {
-    const element = notes[index];
-    if (element._id === id) {
-      element.title = title;
-      element.description = description;
-      element.tag = tag;
+    //Logic to edit the notes in Client-side
+    for (let index = 0; index < notes.length; index++) {
+      const element = notes[index];
+      if (element._id === id) {
+        element.title = title;
+        element.description = description;
+        element.tag = tag;
+      }
 
     }
   }
-}
 
 
-return (
-  //ye export krne mai kaam aaega... using useContext hook>>>>>
-  <NoteContext.Provider value={{ notes, setNotes, addNote, deleteNote, editNote, getNotes }}>
-    {props.children}
-  </NoteContext.Provider>
-)
+  return (
+    //ye export krne mai kaam aaega... using useContext hook>>>>>
+    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, getNotes }}>
+      {props.children}
+    </NoteContext.Provider>
+  )
 
 }
 export default NoteState;
