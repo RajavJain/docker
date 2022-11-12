@@ -14,3 +14,8 @@ i{
 i:hover{
     color: rgb(255, 0, 0);
 }
+
+img{
+    border: 2px solid white;
+    border-radius: 10px;
+}
