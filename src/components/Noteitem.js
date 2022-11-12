@@ -9,7 +9,7 @@ const Noteitem = (props) => {
 
     return (
         <>
-            <div className='col-md-3'>
+            <div className='col-md-4'>
                 {/* Jo props send kr rhe hai wo sabhi is bootstrap k card mai aaega*/}
                 <div className="card my-2" >
                     <div className="card-body ">
