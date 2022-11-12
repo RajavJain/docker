@@ -2,13 +2,8 @@ import React , {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 
-
-
-    
-  
-   
+     
 const Navbar = () => {
-
     let location = useLocation();
     useEffect(() => {
         // Google Analytics
@@ -19,7 +14,7 @@ const Navbar = () => {
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">Docker</Link>
+                    <a className="navbar-brand" href='/'>Docker</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -33,9 +28,9 @@ const Navbar = () => {
                             </li>
 
                         </ul>
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                                <button className="btn btn-outline-success" type="submit">Search</button>
+                        <form className="d-flex">
+                                <Link class="btn btn-primary mx-2" to="/login" role="button">Login</Link>
+                                <Link class="btn btn-outline-warning " to="/signup" role="button">Don't have Account</Link>
                         </form>
                     </div>
                 </div>
