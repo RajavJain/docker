@@ -95,7 +95,7 @@ const NoteState = (props) => {
     //Logic for API calls---
     // API Call 
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM2MTU2ZjRmMzhhYzMyY2NhOTkxOGRkIn0sImlhdCI6MTY2NzQxMjM1Nn0.N2YzNjLsw_vTR5di0Flk1P4Bx3GYZsZEgKWJ9YIXVEk"
@@ -106,14 +106,18 @@ const NoteState = (props) => {
     console.log(json);
 
 
+    let newNotes = JSON.parse(JSON.stringify(notes))//made as we are unable to update state in front end part...
+
     //Logic to edit the notes in Client-side
-    for (let index = 0; index < notes.length; index++) {
-      const element = notes[index];
+    for (let index = 0; index < newNotes.length; index++) {
+      const element = newNotes[index];
       if (element._id === id) {
-        element.title = title;
-        element.description = description;
-        element.tag = tag;
+        newNotes[index].title = title;
+        newNotes[index].description = description;
+        newNotes[index].tag = tag;
+        break;
       }
+      setNotes(newNotes);
 
     }
   }
