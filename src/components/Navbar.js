@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
      
 const Navbar = () => {
     let location = useLocation();
+    //useEffect render ke baad chlne ke liye batata hai... mtlb ki jab jab location change hoga it will render, used only for active ness of the navbar
     useEffect(() => {
         // Google Analytics
         // console.log(location.pathname);
@@ -18,6 +19,7 @@ const Navbar = () => {
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
+                    
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
@@ -26,11 +28,11 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <Link className={`nav-link ${location.pathname==="/about" ? "active" : ""}`} to="/about">About</Link>
                             </li>
-
                         </ul>
+
                         <form className="d-flex">
-                                <Link class="btn btn-primary mx-2" to="/login" role="button">Login</Link>
-                                <Link class="btn btn-outline-warning " to="/signup" role="button">Don't have Account</Link>
+                                <Link className="btn btn-primary mx-2" to="/login" role="button">Login</Link>
+                                <Link className="btn btn-outline-warning " to="/signup" role="button">Don't have Account</Link>
                         </form>
                     </div>
                 </div>

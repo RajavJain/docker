@@ -8,10 +8,10 @@ const Notes = () => {
     //isme hamne notes ko import kr liya hai using useContext hook..
     const context = useContext(noteContext);
     // eslint-disable-next-line 
-    const { notes, getNotes, editNote } = context;
+    const { notes, getNotes, editNote } = context;//aur ye hamne import kr liye hai.. ya phir kahe to destructuring kr liye.
 
 
-    //it is used to fetch all the notes only once using getNotes
+    //it is used to fetch all the notes only once using getNotes, it will get all the notes on rendering
     useEffect(() => {
         getNotes();
         // eslint-disable-next-line
@@ -28,7 +28,7 @@ const Notes = () => {
         setNote({id: currentNote._id ,etitle: currentNote.title , edescription: currentNote.description, etag: currentNote.tag})
     }
 
-    const [note, setNote] = useState({id:"" ,etitle: "", edescription: "", etag: "default"})
+    const [note, setNote] = useState({id:"" ,etitle: "", edescription: "", etag: ""})
 
 
      //function made for buttons and input-----
