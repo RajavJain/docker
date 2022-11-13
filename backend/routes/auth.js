@@ -23,9 +23,10 @@ router.post('/createuser',
         body('password').isLength({ min: 5 })
     ]
     , async (req, res) => { //post is used to create the data in CRUD like operation
+        let success=false;
         const errors = validationResult(req);//took the code from express-validator, more optimized one, if errors then it will return error
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json({ success, errors: errors.array() });
         }
         //res.send(req.body); or we can use the below syntax through express-validator site
 
@@ -35,7 +36,7 @@ router.post('/createuser',
         try {
             let user = await User.findOne({ email: req.body.email })//it will search out the data with similar email id, and ye isliye kiya hai takki data mai duplicacy naa aa jaae---
             if (user) {
-                return res.status(400).json({ error: "Sorry this user is already registered" })
+                return res.status(400).json({ success, error: "Sorry this user is already registered" })
             }
 
             //isme bcrptjs ka use kiya hai so that password mai ek salt add ho jaae to avoid the hacking of the data...
@@ -60,7 +61,8 @@ router.post('/createuser',
             const authtoken = jwt.sign(data, JWT_SECRET)//for the signing the password of the user, and will be used in further verification of the user
 
             // res.json(user)
-            res.json({ authtoken })//it will send the signed token in body....
+            success=true
+            res.json({ success, authtoken })//it will send the signed token in body....
         }
         catch (error) {
             console.error(error.message)
