@@ -1,8 +1,11 @@
 import React,{useState} from 'react'
+import { useNavigate } from 'react-router-dom' ;//used for redirecting the user to their notes
+
 
 
 const Login = () => {
   const [credentials, setCredentials] = useState({email: "" , password: ""})
+  const navigate = useNavigate();
 
   const handleSubmit= async (e)=>{
     e.preventDefault();
@@ -16,6 +19,16 @@ const Login = () => {
 
        const json = await response.json();
        console.log(json);
+       //yaha pr success hum json backend se laaye hai kyuki waha set kr diya hai agar valid authtoken hai then returns true>>>
+       if(json.success)
+       {
+        localStorage.setItem('token',json.authtoken)
+        //now agar true hota hai then Using UseNavigator Hook(earlier usehistory was used) to redirect the user in its notes page
+        navigate("/");
+       }
+       else{
+        alert("Invalid Credentials")
+       }
   }
 
 
