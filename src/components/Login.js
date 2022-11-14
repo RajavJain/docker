@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';//used for redirecting the user t
 
 
 
-const Login = () => {
+const Login = (props) => {
   const [credentials, setCredentials] = useState({ email: "", password: "" })
   const navigate = useNavigate();
 
@@ -23,10 +23,11 @@ const Login = () => {
     if (json.success) {
       localStorage.setItem('token', json.authtoken)
       //now agar true hota hai then Using UseNavigator Hook(earlier usehistory was used) to redirect the user in its notes page
+      props.showAlert("Logged in Successfully","success")
       navigate("/");
     }
     else {
-      alert("Invalid Credentials")
+      props.showAlert("Invalid Credentials","danger")
     }
   }
 
@@ -39,7 +40,7 @@ const Login = () => {
 
     <div className='container'>
 
-      <h2 className='my-10'>
+      <h2>
         Please Login to Access Notes
       </h2>
       <form onSubmit={handleSubmit}>

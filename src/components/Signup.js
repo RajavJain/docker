@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';//used for redirecting the user to their notes
 
 
-const Signup = () => {
+const Signup = (props) => {
   
   const [credentials, setCredentials] = useState({name:"", email: "", password: "", cpassword: "" })
   const navigate = useNavigate();
@@ -22,11 +22,12 @@ const Signup = () => {
     //yaha pr success hum json backend se laaye hai kyuki waha set kr diya hai agar valid authtoken hai then returns true>>>
     if (json.success) {
       localStorage.setItem('token', json.authtoken)
+      props.showAlert("Account Created Successfully","success")
       //now agar true hota hai then Using UseNavigator Hook (earlier usehistory was used) to redirect the user in its notes page
       navigate("/");
     }
     else {
-      alert("Invalid Credentials")
+      props.showAlert("Invalid Credentials","danger")
     }
   }
 
@@ -63,7 +64,7 @@ const Signup = () => {
           <input type="password" className="form-control" id="cpassword" name='cpassword' onChange ={onChange} minLength={5} required placeholder="Password"/>
         </div>
 
-        <button type="submit" className="btn btn-warning my-3 ">Create New Account</button>
+        <button type="submit" className="btn btn-danger my-3 ">Create New Account</button>
       </form>
     </div>
   )

@@ -4,7 +4,7 @@ import Noteitem from './Noteitem';
 import noteContext from '../context/notes/noteContext';
 
 
-const Notes = () => {
+const Notes = (props) => {
     //isme hamne notes ko import kr liya hai using useContext hook..
     const context = useContext(noteContext);
     // eslint-disable-next-line 
@@ -36,6 +36,7 @@ const Notes = () => {
         console.log("Updating the notes");
         editNote(note.id, note.etitle, note.edescription, note.etag);
         refClose.current.click();
+        props.showAlert("Updated Successfully", "success");
         }
 
     const onChange = (e)=>{
@@ -46,7 +47,7 @@ const Notes = () => {
 
     return (
         <>
-            <AddNote />
+            <AddNote showAlert={props.showAlert }/>
 
 
             {/* Bootstrap modal */}
@@ -99,7 +100,7 @@ const Notes = () => {
 
                 {notes.map((note) => {
                     //As a prop mai note ko send kr diya hai and Noteitem.js mai props ki jagah pr title and desc bhej diya hai
-                    return <Noteitem key={note._id} updateNote={updateNote} note={note} />
+                    return <Noteitem key={note._id} updateNote={updateNote} showAlert={props.showAlert} note={note} />
                 })}
 
             </div>

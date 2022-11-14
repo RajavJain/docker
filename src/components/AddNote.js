@@ -4,7 +4,7 @@ import noteContext from '../context/notes/noteContext';
 
 
 
-const AddNote = () => {
+const AddNote = (props) => {
     //useContext ki madad se called function named addNote from NoteState.js ..
     const context = useContext(noteContext);
     const {addNote} = context;
@@ -18,6 +18,8 @@ const AddNote = () => {
         e.preventDefault();//to avoid reloading of the page.. 
         addNote(note.title, note.description, note.tag);
         setNote({title: "", description: "", tag: ""})
+        props.showAlert("Added Successfully", "success")
+
     }
 
     const onChange = (e)=>{
