@@ -27,7 +27,7 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar/>
+        <Navbar showAlert={showAlert}/>
       <Alert alert={alert}/>
         <div className="container">
           {/* yaha noteState ko lga diya hai takki saare states access kr paaye through NoteContext.... */}

@@ -1,10 +1,16 @@
 import React , {useEffect} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 
      
-const Navbar = () => {
+const Navbar = (props) => {
+    let navitage=useNavigate();
     let location = useLocation();
+    const handleLogout=()=>{
+        localStorage.removeItem('token');
+        props.showAlert("Logged Out Successfully","success");
+        navitage('/login');
+    }
     //useEffect render ke baad chlne ke liye batata hai... mtlb ki jab jab location change hoga it will render, used only for active ness of the navbar
     useEffect(() => {
         // Google Analytics
@@ -30,10 +36,11 @@ const Navbar = () => {
                             </li>
                         </ul>
 
-                        <form className="d-flex">
+                        {!localStorage.getItem('token') ?<form className="d-flex">
                                 <Link className="btn btn-primary mx-2" to="/login" role="button">Login</Link>
                                 <Link className="btn btn-outline-warning " to="/signup" role="button">Don't have Account ?</Link>
-                        </form>
+                        </form> : <button onClick={handleLogout} className="btn btn-danger"> Logout</button>
+}
                     </div>
                 </div>
             </nav>

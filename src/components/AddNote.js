@@ -27,7 +27,7 @@ const AddNote = (props) => {
     }
     
 return (
-        <div className="container my-3">
+    <div className="container mt-3">
             <h2>Add a Notes</h2>
             <form className="my-3">
                 <div className="mb-3">

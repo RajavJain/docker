@@ -2,18 +2,26 @@ import React, { useContext, useEffect, useRef, useState, } from 'react'
 import AddNote from './AddNote';
 import Noteitem from './Noteitem';
 import noteContext from '../context/notes/noteContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const Notes = (props) => {
     //isme hamne notes ko import kr liya hai using useContext hook..
     const context = useContext(noteContext);
+    let navigate=useNavigate();
     // eslint-disable-next-line 
     const { notes, getNotes, editNote } = context;//aur ye hamne import kr liye hai.. ya phir kahe to destructuring kr liye.
 
 
     //it is used to fetch all the notes only once using getNotes, it will get all the notes on rendering
     useEffect(() => {
-        getNotes();
+        if(localStorage.getItem('token'))
+        {
+            getNotes();
+        }
+        else{
+            navigate("/login");
+        }
         // eslint-disable-next-line
     }, [])
 
