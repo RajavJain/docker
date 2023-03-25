@@ -42,12 +42,15 @@ router.post('/createuser',
             //isme bcrptjs ka use kiya hai so that password mai ek salt add ho jaae to avoid the hacking of the data...
             const salt = await bcrypt.genSalt(10)
             const secPass = await bcrypt.hash(req.body.password, salt)//ye function bcryptjs ki site mai diye hue hai pehle se...
+
+
             user = await User.create({  // in sab ko await krana jaruri tha, warna execution mai error aaeya
                 name: req.body.name,
                 password: secPass,
                 email: req.body.email
             });
 
+            
             // .then(user => res.json(user)) -------- used async-await instead of .then
             //     .catch(err => {
             //         console.log(err)

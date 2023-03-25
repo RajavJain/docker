@@ -20,7 +20,7 @@ app.use('/api/notes', require('./routes/notes'))
 
 
 app.get('/', (req, res) => {
-  res.send('Hello World! ')
+  res.send('Hello World! ') // Just for the testing purpose... so that we can run the localhost:2000 and give some response for verifying.
 })
 
 app.listen(port, () => {

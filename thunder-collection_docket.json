@@ -1,0 +1,193 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "docket",
+    "dateExported": "2023-03-25T22:12:02.215Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "13a75dfc-255d-4b45-80f6-66d662848b08",
+            "name": "Authentication",
+            "containerId": "",
+            "created": "2022-10-31T17:13:28.669Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "2d68e6cd-ea4e-4ab9-93c0-4eb66a1132b8",
+            "name": "Notes",
+            "containerId": "",
+            "created": "2022-11-02T19:26:45.894Z",
+            "sortNum": 40000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "f3ef15e8-98fb-4910-b57a-efdd43a360a6",
+            "colId": "714ea8d2-aad3-4697-8438-888859d3bb31",
+            "containerId": "13a75dfc-255d-4b45-80f6-66d662848b08",
+            "name": "Create a new User",
+            "url": "localhost:2000/api/auth/createuser",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2022-10-31T17:13:51.991Z",
+            "modified": "2022-11-01T17:27:16.382Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Raja babu ki bhabhi \",\n  \"email\": \"bhaiyabhabhidoosri@gmail.com\",\n  \"password\": \"babubhaiyarocks\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "edfa7e84-ef9f-4df6-8767-0a9c1ed5d83c",
+            "colId": "714ea8d2-aad3-4697-8438-888859d3bb31",
+            "containerId": "13a75dfc-255d-4b45-80f6-66d662848b08",
+            "name": "User login using Credientials",
+            "url": "localhost:2000/api/auth/login",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2022-11-02T17:59:14.685Z",
+            "modified": "2022-11-02T18:05:55.279Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"bhaiyabhabhidoosri@gmail.com\",\n  \"password\": \"babubhaiyarocks\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6671ada9-5bf6-497c-aedb-51ecbff155f9",
+            "colId": "714ea8d2-aad3-4697-8438-888859d3bb31",
+            "containerId": "13a75dfc-255d-4b45-80f6-66d662848b08",
+            "name": "Get user Data",
+            "url": "localhost:2000/api/auth/getuser",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2022-11-02T19:19:24.792Z",
+            "modified": "2022-11-02T19:22:03.804Z",
+            "headers": [
+                {
+                    "name": "auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM2MTU2ZjRmMzhhYzMyY2NhOTkxOGRkIn0sImlhdCI6MTY2NzQxMjM1Nn0.N2YzNjLsw_vTR5di0Flk1P4Bx3GYZsZEgKWJ9YIXVEk"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "697cb248-63a6-44e9-827d-4bf3af46fe66",
+            "colId": "714ea8d2-aad3-4697-8438-888859d3bb31",
+            "containerId": "2d68e6cd-ea4e-4ab9-93c0-4eb66a1132b8",
+            "name": "Fetch all Notes",
+            "url": "localhost:2000/api/notes/fetchallnotes",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2022-11-03T12:47:00.679Z",
+            "modified": "2022-11-03T12:58:33.399Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM2MTU2ZjRmMzhhYzMyY2NhOTkxOGRkIn0sImlhdCI6MTY2NzQxMjM1Nn0.N2YzNjLsw_vTR5di0Flk1P4Bx3GYZsZEgKWJ9YIXVEk"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "abdb4028-22c4-4e01-b2e8-4639ca906f55",
+            "colId": "714ea8d2-aad3-4697-8438-888859d3bb31",
+            "containerId": "2d68e6cd-ea4e-4ab9-93c0-4eb66a1132b8",
+            "name": "Add Note",
+            "url": "localhost:2000/api/notes/addnote",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2022-11-03T13:52:12.273Z",
+            "modified": "2022-11-03T13:56:41.715Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM2MTU2ZjRmMzhhYzMyY2NhOTkxOGRkIn0sImlhdCI6MTY2NzQxMjM1Nn0.N2YzNjLsw_vTR5di0Flk1P4Bx3GYZsZEgKWJ9YIXVEk"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"LinkedIN\",\n  \"description\": \"Add new connections\",\n  \"tag\": \"Important\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "7f39cb5a-da70-4812-a86a-435a1e5cea82",
+            "colId": "714ea8d2-aad3-4697-8438-888859d3bb31",
+            "containerId": "2d68e6cd-ea4e-4ab9-93c0-4eb66a1132b8",
+            "name": "Update Note",
+            "url": "localhost:2000/api/notes/updatenote/6363c89e5ffe51b803e57a08",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2022-11-03T14:31:40.865Z",
+            "modified": "2022-11-03T14:34:23.999Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM2MTU2ZjRmMzhhYzMyY2NhOTkxOGRkIn0sImlhdCI6MTY2NzQxMjM1Nn0.N2YzNjLsw_vTR5di0Flk1P4Bx3GYZsZEgKWJ9YIXVEk"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"LinkedIN\",\n  \"description\": \"Add new connections and send them custom message\",\n  \"tag\": \"Important\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b4ba47d6-32ed-4ca7-b376-6064fdf4c9f6",
+            "colId": "714ea8d2-aad3-4697-8438-888859d3bb31",
+            "containerId": "2d68e6cd-ea4e-4ab9-93c0-4eb66a1132b8",
+            "name": "Delete Note",
+            "url": "localhost:2000/api/notes/deletenote/6363d77587b2e70ba0c7ef2d",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2022-11-03T14:51:20.198Z",
+            "modified": "2022-11-03T15:00:22.746Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM2MTU2ZjRmMzhhYzMyY2NhOTkxOGRkIn0sImlhdCI6MTY2NzQxMjM1Nn0.N2YzNjLsw_vTR5di0Flk1P4Bx3GYZsZEgKWJ9YIXVEk"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
